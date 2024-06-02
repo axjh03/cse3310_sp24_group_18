@@ -1,3 +1,3 @@
 [build]
 publish = "target"
-command = "wget https://www-us.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz && tar xzf apache-maven-3.6.3-bin.tar.gz && sudo mv apache-maven-3.6.3 /usr/local/apache-maven && export M2_HOME=/usr/local/apache-maven && export PATH=$M2_HOME/bin:$PATH && mvn -version && mvn clean install package compile exec:java"
+command = "sudo apt-get update && sudo apt-get install -y maven && mvn clean install package compile exec:java"
