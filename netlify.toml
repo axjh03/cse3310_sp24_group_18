@@ -1,12 +1,14 @@
+# Install Maven during the build
 [build.install]
   command = "apt-get update && apt-get install -y maven"
 
+# Build settings
 [build]
   base = ""
   publish = "/target/classes"
   command = """
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
-    export PATH=$PATH:/opt/maven/bin
+    export PATH=$PATH:/usr/bin/maven/bin
     mvn clean
     mvn install
     mvn package
@@ -16,3 +18,17 @@
 
 [build.environment]
   JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
+
+# Use a custom Docker image with Maven pre-installed
+[build.processing]
+  docker = true
+
+[build.processing.docker]
+  image = "openjdk:11-jdk"
+  entrypoint = "/bin/bash"
+  command = """
+    apt-get update &&
+    apt-get install -y maven &&
+    rm -rf /var/lib/apt/lists/* &&
+    mvn clean install
+  """
