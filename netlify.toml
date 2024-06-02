@@ -22,8 +22,6 @@
 # Use a custom Docker image with Maven pre-installed
 [build.processing]
   docker = true
-
-[build.processing.docker]
   image = "openjdk:11-jdk"
   entrypoint = "/bin/bash"
   command = """
