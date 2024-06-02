@@ -1,3 +1,18 @@
+[build.install]
+  command = "apt-get update && apt-get install -y maven"
+
 [build]
-publish = "target"
-command = "sudo apt-get update && sudo apt-get install -y maven && mvn clean install package compile exec:java"
+  base = ""
+  publish = "/target/classes"
+  command = """
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+    export PATH=$PATH:/opt/maven/bin
+    mvn clean
+    mvn install
+    mvn package
+    mvn compile
+    mvn exec:java
+  """
+
+[build.environment]
+  JAVA_HOME = "/usr/lib/jvm/java-11-openjdk-amd64"
