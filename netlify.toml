@@ -1,3 +1,3 @@
 [build]
-  command = "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 && wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz && tar -xzf apache-maven-3.8.6-bin.tar.gz && export M2_HOME=$PWD/apache-maven-3.8.6 && export PATH=$M2_HOME/bin:$PATH && mvn clean package && mvn exec:java"
-  publish = "target/"  # Adjust this to the directory where your built files are located
+  command = "export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64 && wget https://downloads.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz && tar -xzf apache-maven-3.8.6-bin.tar.gz && export M2_HOME=$PWD/apache-maven-3.8.6 && export PATH=$M2_HOME/bin:$PATH && mvn clean package -Dmaven.compiler.source=1.8 -Dmaven.compiler.target=1.8 && mvn exec:java -Dexec.mainClass=uta.cse3310.App"
+  publish = "target/"
