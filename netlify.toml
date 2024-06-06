@@ -1,26 +1,3 @@
-# Production context: All deploys from the Production branch will
-# inherit these settings.
-[context.production]
-  publish = "target/classes/webapp/html"
-  command = "mvn clean install package compile"
-
-# Deploy Preview context: All Deploy Previews will inherit these settings.
-[context.deploy-preview]
-  publish = "target/classes/webapp/html"
-  command = "mvn clean install package compile"
-
-# Branch Deploy context: All deploys that are not from a pull/merge request
-# or from the Production branch will inherit these settings.
-[context.branch-deploy]
-  publish = "target/classes/webapp/html"
-  command = "mvn clean install package compile"
-
-# Next.js packages require the NODE_ENV variable to be set to production
-[build.environment]
-  NODE_ENV = "production"
-
-# Redirect rule for Single Page Applications
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+[build]
+  command = "./build.sh"
+  publish = "target"  # Adjust this to the directory where your built files are located
